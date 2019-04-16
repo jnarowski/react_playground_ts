@@ -6,10 +6,10 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 const configureStore = (initialState = {}) => {
-    return createStore(
-        reducers,
-        applyMiddleware(thunk)
-    );
+	return createStore(
+		reducers,
+		applyMiddleware(thunk)
+	);
 }
 
 const store = configureStore({})

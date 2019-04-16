@@ -3,30 +3,25 @@ import './App.css';
 import {
   connect
 } from 'react-redux';
+
 import {
-  simpleAction
-} from './store/actions/simpleAction'
+  dispatch
+} from './store'
 
 import { companies } from './store/reducers'
 
 const mapStateToProps = state => {
   return {
-    result: state.contacts.result,
     companies: state.companies.data
   }
 }
 
 class App extends Component {
-  doSimpleAction = (event) => {
-    simpleAction();
-  }
-
   doCompanyAction = () => {
     companies.fetchSomething()
   }
 
   doCompanyClear = () => {
-    console.log('clear....');
     companies.clear()
   }
 
@@ -34,14 +29,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <pre>
-            {
-              JSON.stringify(this.props.result)
-            }
-          </pre>
-          <button onClick={this.doSimpleAction}>
-            Test redux action
-          </button>
           <pre>
             {
               JSON.stringify(this.props.companies)
