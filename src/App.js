@@ -7,13 +7,27 @@ import {
   simpleAction
 } from './store/actions/simpleAction'
 
-const mapStateToProps = state => ({
-  ...state
-})
+import { companies } from './store/reducers'
+
+const mapStateToProps = state => {
+  return {
+    result: state.contacts.result,
+    companies: state.companies.data
+  }
+}
 
 class App extends Component {
   doSimpleAction = (event) => {
     simpleAction();
+  }
+
+  doCompanyAction = () => {
+    companies.fetchSomething()
+  }
+
+  doCompanyClear = () => {
+    console.log('clear....');
+    companies.clear()
   }
 
   render() {
@@ -22,11 +36,22 @@ class App extends Component {
         <header className="App-header">
           <pre>
             {
-              JSON.stringify(this.props)
+              JSON.stringify(this.props.result)
             }
           </pre>
           <button onClick={this.doSimpleAction}>
             Test redux action
+          </button>
+          <pre>
+            {
+              JSON.stringify(this.props.companies)
+            }
+          </pre>
+          <button onClick={this.doCompanyAction}>
+            Test company load
+          </button>
+          <button onClick={this.doCompanyClear}>
+            Test company clear
           </button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
