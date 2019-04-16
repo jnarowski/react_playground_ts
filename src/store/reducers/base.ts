@@ -86,7 +86,7 @@ export default class BaseReduce {
     };
   }
 
-  public createAction = (name: string, process: any) => {
+  public createAction(name: string, process: any) {
     const actionLabel = `${this.label}/${name}`;
 
     this.actions[name] = {
@@ -94,13 +94,13 @@ export default class BaseReduce {
       key: actionLabel,
       process
     };
-  };
+  }
 
-  public createHook = (name: string, process: any) => {
+  public createHook(name: string, process: any) {
     this.actions[name].hooks.push(process);
-  };
+  }
 
-  public reducer = (state = this.initialState, action: any) => {
+  public reducer(state = this.initialState, action: any) {
     try {
       const names = Object.keys(this.actions);
 
@@ -132,5 +132,5 @@ export default class BaseReduce {
     } catch (e) {
       console.error(`Could not process reducer action for: ${this.label}`, e);
     }
-  };
+  }
 }

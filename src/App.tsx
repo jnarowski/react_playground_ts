@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-
-import { companies } from "./store/reducers";
+import { companies } from "./store/reducers/index";
 
 interface State {
   companies: {
@@ -36,17 +35,6 @@ class App extends Component<Props> {
           <pre>{JSON.stringify(this.props.companies)}</pre>
           <button onClick={this.doCompanyAction}>Test company load</button>
           <button onClick={this.doCompanyClear}>Test company clear</button>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     );
